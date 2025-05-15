@@ -16,11 +16,19 @@ def print_vertical_separator():
 
 def generate_board(GRID_SIZE : int):
 
+    '''
+    Generates an empty GRID_SIZE x GRID_SIZE square board.
+    '''
+
     board = [[" " for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
     return board
 
 
 def print_board(board, GRID_SIZE : int):
+
+    '''
+    Prints out the board in its current state.
+    '''
 
     string = ""
 
@@ -41,6 +49,11 @@ def print_board(board, GRID_SIZE : int):
 
 
 def player_turn(board, player : str, GRID_SIZE: int):
+
+    '''
+    A singular turn that allows the player to place a stone on a valid coordinate on board. Checks for invalid inputs
+    and warns the player.
+    '''
 
     error_message = "Invalid coordinate. Please try again."
     
@@ -72,6 +85,10 @@ def player_turn(board, player : str, GRID_SIZE: int):
 
 
 def end_check(board, GRID_SIZE: int):
+
+    '''
+    checks whether the game of tic-tac-toe has ended. If yes, returns the winner or 'draw'. If no, returns False.
+    '''
 
     #columns check
     for i in range(GRID_SIZE):
@@ -119,12 +136,31 @@ def end_check(board, GRID_SIZE: int):
 
 
 def coin_flip(player):
+    
+    '''
+    Purely cosmetic function that outputs a visual coin flip. Argument 'player' displayed on the coin.
+    '''
+
     time.sleep(random.uniform(2, 4))
     print(f"  _____  \n /     \ \n|   {player}   |\n \_____/\n")
     time.sleep(1)
 
 
 def tic_tac_toe(GRID_SIZE=3):
+
+    '''
+    Commences and runs a game of tic-tac-toe on a GRID_SIZE x GRID_SIZE playing board.
+    GRID_SIZE must be an int such that 3 <= GRID_SIZE <= 26.
+
+    Columns are enterd as letters of the alphabet while rows are numberd from one.
+    When entering a coordinate to place a stone, columns must be enterd first and rows second.
+    Examples of valid input on a 3x3 board would be the following: a1, b1, a2, c3.
+    Examples of invalid input on a 3x3 board would be the following: a4, d1, B2, c 3, 2b, Hello world!
+
+    At the start, a player is randomly selected to make the first move.
+    The first player to fill a row, a column or a diagonal with their stones wins.
+    If the board is full and no player has won, the game ends in a draw.
+    '''
 
     #introduction
     print("Welcome to Tic Tac Toe!")
@@ -138,8 +174,10 @@ def tic_tac_toe(GRID_SIZE=3):
     #random player selection
     print("Let's flip a coin to see which player will start.")
     player = "O" if random.randint(0,1) else "X"
-    #stupid coin flip visual (optional)
-    coin_flip(player)
+
+    #coin flip visual (optional)
+    #coin_flip(player)
+
     print(f"Player {player} begins. Let's start the game.\n")
 
     #playing board generation
