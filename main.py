@@ -135,17 +135,6 @@ def end_check(board, GRID_SIZE: int):
     return "draw"
 
 
-def coin_flip(player):
-    
-    '''
-    Purely cosmetic function that outputs a visual coin flip. Argument 'player' displayed on the coin.
-    '''
-
-    time.sleep(random.uniform(2, 4))
-    print(f"  _____  \n /     \ \n|   {player}   |\n \_____/\n")
-    time.sleep(1)
-
-
 def tic_tac_toe(GRID_SIZE=3):
 
     '''
@@ -171,19 +160,16 @@ def tic_tac_toe(GRID_SIZE=3):
     print("* horizontal,\n* vertical or\n* diagonal row")
     print_vertical_separator()
 
-    #random player selection
-    print("Let's flip a coin to see which player will start.")
-    player = "O" if random.randint(0,1) else "X"
-
-    #coin flip visual (optional)
-    #coin_flip(player)
-
-    print(f"Player {player} begins. Let's start the game.\n")
-
     #playing board generation
     board = generate_board(GRID_SIZE)
     print_board(board, GRID_SIZE)
     end = False
+
+    #random player selection
+    print("Let's flip a coin to see which player will start.")
+    time.sleep(2)
+    player = "O" if random.randint(0,1) else "X"
+    print(f"Player {player} begins. Let's start the game.\n")
     
     while not end:
         player_turn(board, player, GRID_SIZE)
@@ -197,4 +183,4 @@ def tic_tac_toe(GRID_SIZE=3):
         print("It's a draw! Neither player wins.")
 
 
-tic_tac_toe(3)
+tic_tac_toe()
