@@ -1,12 +1,9 @@
-#Tic tac toe
-
 """
 projekt_2.py: druhý projekt do Engeto Online Python Akademie
 
 author: Martin Gabriel
 email: gabmar@post.com
 """
-
 import random
 import time
 
